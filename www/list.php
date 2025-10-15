@@ -1,5 +1,5 @@
 <?php
-    $title="List of VIRUS data ";
+    $title="List of VIRUS data - Article retracted and/or with EoC";
     include($_SERVER['DOCUMENT_ROOT'].'/includes/bddConnect.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/orderby.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
