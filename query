@@ -1,0 +1,3 @@
+SELECT * FROM `ds-external-data.author_check.flagged_publications_shared`
+SELECT ret.*, doi FROM `ds-external-data.author_check.flagged_publications_shared` ret
+INNER JOIN `dimensions-ai.data_analytics.publications` USING(id)

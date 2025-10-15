@@ -1,0 +1,323 @@
+:root {
+    --blue :       #217fad;
+    --bluehover:   #014f86;
+    --red:       #e56b6f;
+    --redhover:  #d81159;
+    --orange:      #fbb13c;
+    --orangehover: #fb8500;
+    --green:        #6FC8C3;
+    --greenhover:   #45c584;
+    --lightblue:   #CCE9F6;
+    --grisclair:   #f1f1f1;
+}
+* {
+    font-family: "Noto Sans", sans-serif;
+}            
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--lightgray);
+}
+a {
+    color:var(--blue);
+    text-decoration: none;
+}
+a:hover {
+    color:var(--bluehover);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table thead tr {
+    background:var(--blue);
+    color:white;
+    font-weight: 700;
+}
+table thead tr td {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+table tbody tr td {
+    vertical-align:top;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+table tbody tr td.pubpeer, table tbody tr td.doi, table tbody tr td.retraction, table tbody tr td.eoc {
+    font-size: 12px;
+}
+table tbody tr td.title {
+    font-weight: 600;
+}
+table tbody tr {
+    border-bottom: 1px solid #c1c1c1;
+}            
+#articles_wrapper .grid-x:nth-child(1) .cell.auto {
+    float: left;
+    margin-bottom: 20px;
+}
+#articles_wrapper .grid-x:nth-child(1) .cell.shrink {
+    float: right;
+    margin-bottom: 20px;
+}            
+#articles_wrapper .grid-x:nth-child(3) .cell.auto {
+    float: right;
+    margin-bottom: 20px;
+}
+#articles_wrapper .grid-x:nth-child(3) .cell.shrink {
+    float: left;
+    margin-bottom: 20px;
+}            
+ul.pagination li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+}            
+h1 {
+    text-align: center;
+    color: var(--blue);
+    font-weight: 900;
+    display: table;
+    margin: 0 auto;
+}
+td.retraction a {
+    color:var(--red);
+}
+td.retraction a:hover {
+    color:var(--redhover);
+}
+td.eoc a {
+    color:var(--orange);
+}
+td.eoc a {
+    color:var(--orange);
+}
+td.eoc a:hover {
+    color:var(--orangehover);
+}
+td.pubpeer a {
+    color:var(--green);
+}
+td.pubpeer a:hover {
+    color:var(--greenhover);
+}
+input[type="submit"] {
+    background: var(--blue);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;	
+    border-radius: 3px;
+}
+.results {
+    float:right;
+    font-weight: 600;
+}
+.filterReset {
+    position: relative;
+    left: 20px;
+    top:9px;
+}
+.filterReset img {
+    height: 28px;
+}
+input[type=search]::placeholder {
+    color:var(--blue);
+}
+select, input[type=search] {
+    background:var(--lightblue);
+    color:var(--blue);
+    border:none;
+    padding: 4px;
+    border-radius: 3px;
+}
+select option:hover {
+    background: var(--blue);
+    color: white;
+}
+.clear {
+    width: 100%;
+    clear: both;
+}
+.perPageLabel {
+    float:right
+}
+.txtSearchLabel {
+    float:left;
+}
+.txtSearchLabel, .perPageLabel {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+ul.pagination li.current {
+    font-weight: 600;
+}
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--blue);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loadingText {
+    margin-left: 20px;
+}
+#mainContainer {
+    opacity:0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
+}      
+#main {
+    padding: 10px;
+}            
+.sortArrow {
+    float:right;
+    display: flex;
+}
+.sortArrow img {
+    width: 12px;
+    opacity: 0.6;
+}
+.sortArrow.active img {
+    opacity: 1;
+}
+.sortArrowasc {
+    position: relative;
+    right: 0;
+    top: -17px;
+}
+.sortArrowdesc {
+    position: relative;
+    right: -12px;
+    top: -5px;
+}
+span.tableHeader {
+    float: left;
+    width: calc(100% - 20px);
+    margin-right: 20px;
+    position: relative;
+    top: 4px;
+}
+span.tableHeader.tableHeaderAuthors {
+    top: -1px;
+}            
+td.pubDate {
+    white-space: nowrap;
+}
+.menuToggle {
+    display: block;
+    cursor: pointer;
+    position:relative;
+    z-index:6;
+    top: 10px;
+    left: 10px;
+    width: 27px;
+    height: 27px;
+  }
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--blue);
+    margin: 6px 0;
+    transition: 0.4s;
+	border-radius: 3px;
+}
+.menuToggle:hover .bar1, .menuToggle:hover .bar2, .menuToggle:hover .bar3  {
+    background-color: var(--bluehover);
+}
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+.open .bar2 {
+    opacity: 0;
+}
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+#menu {
+    width:0;
+    height:0;
+}
+.menuArea {
+    width:0;
+    height:0;
+    position:relative;
+}
+#menu.open {
+    display:block;
+}
+.menuInside {
+    padding:50px 10px 0 10px;
+}
+.menuContainer {
+    width: 0;
+    background: var(--lightblue);
+    height: 100vh;
+    position: absolute;
+    top: -5px;
+    padding: 0;
+    z-index: 5;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
+}
+#menu.open .menuContainer {
+    width: 400px;
+    max-width: 100vw;
+}
+#menu h2 {
+    opacity: 0;    
+    white-space: nowrap;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
+}
+#menu.open h2 {
+    opacity: 1;
+}
+#graphYearsContainer, #graphJournalsContainer {
+    width: 74% !important;
+}
+#tableYearsContainer {
+    width: 24% !important;
+}
+#tableYearsContainer, #graphYearsContainer, #graphJournalsContainer {
+    display: inline-block !important;
+    vertical-align: top;
+    margin-top: 20px;
+}
+.tableYears {
+    width: 350px;
+    margin: 30px auto;
+}
