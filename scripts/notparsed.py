@@ -31,6 +31,7 @@ cursor = connection.cursor()
 file_name = 'data.json'
 parsed_records = []
 records=[]
+nb=0
 for record in parseJSON(file_name):
     parsed_records.append(record)
 for r in parsed_records:
@@ -44,4 +45,6 @@ for doi in records:
     exists = cursor.fetchall()
     doExist = len(exists)
     if doExist==0:
+        nb+=1
         print(doi)
+print(str(nb)+" articles found that are not in the database")
