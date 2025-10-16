@@ -122,10 +122,10 @@ input[type="submit"] {
 .filterReset img {
     height: 28px;
 }
-input[type=username]::placeholder, input[type=password]::placeholder, input[type=search]::placeholder {
+input[type=username]::placeholder, input[type=text]::placeholder, input[type=password]::placeholder, input[type=search]::placeholder {
     color:var(--blue);
 }
-select, input[type=search], input[type=username], input[type=password] {
+select, input[type=search], input[type=username], input[type=text], input[type=password] {
     background:var(--lightblue);
     color:var(--blue);
     border:none;
@@ -334,7 +334,8 @@ form#loginForm input {
 }
 .loginContainer {
     width: calc(100vw - 20px);
-    height: calc(100vh - 100px);
+    height: calc(100vh - 100px);    
+    position: absolute;
 }
 .loginWrapper {
     display: table;
@@ -378,4 +379,32 @@ form#loginForm {
 }
 .menuLogout:hover img.nohover {
     display:none;
+}
+td.retraction, td.eoc {
+    white-space: nowrap;
+}
+#passwordView .hover {
+    display:none;
+}
+#passwordView:hover .hover {
+    display:block;
+}
+#passwordView:hover .nohover {
+    display:none;
+}
+#passwordView {
+    position: absolute;   
+    right: 15px;
+    margin-top: 5px;
+    cursor:pointer;
+}
+#passwordView img {
+    width: 32px;
+}
+input#password {
+    float: left;
+    margin-right: 35px;
+}
+#password, #passwordView {
+    display: inline-block;
 }

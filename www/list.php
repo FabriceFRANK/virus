@@ -173,27 +173,45 @@
                               $authors_txt='Unknown';
                           }
                           $retraction='';
+                          $retUrl='';
+                          $retDate='';
                           $eoc='';
+                          $eocUrl='';
+                          $eocDate='';
                           if($a['retractionDoi']) {
-                              if($a['retraction']) {
-                                  $retraction='<a href="'.$a['retraction'].'" target="_blank">'.str_replace('https://doi.org/','',$a['retraction']).'</a>';
-                              }
-                              else {
-                                  $retraction="No notice";
+                              if($a['retraction'] && $a['retraction']!='' && $a['retraction']!='https://doi.org/') {
+                                  $retUrl=$a['retraction'];
                               }
                               if($a['retractionDate']) {
-                                  $retraction.='<br>on '.$a['retractionDate'];
+                                  $retDate=$a['retractionDate'];
+                                  if($retDate=='0000-00-00') {
+                                      $retDate='Date unknown';
+                                  }
+                              }
+                              if($retUrl!='') {
+                                  $retraction.='<a href="'.$retUrl.'" target="_blank">';
+                              }
+                              $retraction.=$retDate;
+                              if($retUrl!='') {
+                                  $retraction.='</a>';
                               }
                           }
                           if($a['eocDoi']) {
-                              if($a['eoc']) {
-                                $eoc='<a href="'.$a['eoc'].'" target="_blank">'.str_replace('https://doi.org/','',$a['eoc']).'</a>';
-                              }
-                              else {
-                                  $eoc="No notice";                                  
+                              if($a['eoc'] && $a['eoc']!='' && $a['eoc']!='https://doi.org/') {
+                                  $eocUrl=$a['eoc'];
                               }
                               if($a['eocDate']) {
-                                  $eoc.='<br>on '.$a['eocDate'];
+                                  $eocDate=$a['eocDate'];
+                                  if($eocDate=='0000-00-00') {
+                                      $eocDate='Date unknown';
+                                  }
+                              }
+                              if($eocUrl!='') {
+                                  $eoc.='<a href="'.$eocUrl.'" target="_blank">';
+                              }
+                              $eoc.=$eocDate;
+                              if($eocUrl!='') {
+                                  $retraction.='</a>';
                               }
                           }
                           $pubdate='';
@@ -210,7 +228,7 @@
                               if($a['pubpeerCommentcount']>1) {
                                   $s='s';
                               }
-                              $pubpeer='<a href="'.$a['pubpeer'].'" target="_blank">'.str_replace('https://pubpeer.com/','',$a['pubpeer']).' </a><br>('.$a['pubpeerCommentcount'].' comment'.$s.')';
+                              $pubpeer='<a href="'.$a['pubpeer'].'" target="_blank">'.$a['pubpeerCommentcount'].' comment'.$s.' </a>';
                           }
                           $altmetrics='';
                           if(!is_null($a['altmetrics'])) {

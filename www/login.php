@@ -15,8 +15,16 @@
                     <div class="loginWrapper">
                         <div class="loginArea">
                             <form id="loginForm" name="loginForm" action="/login.php" method="POST">
-                                <input type="username" id="username" name="username" required placeholder="User name" />
-                                <input type="password" id="password" name="password" required placeholder="Password" />
+                                <div class="formLogin">
+                                    <input type="username" id="username" name="username" required placeholder="User name" />
+                                </div>
+                                <div class="formPassword">
+                                    <input type="password" id="password" name="password" required placeholder="Password" /> 
+                                    <div id="passwordView">                    
+                                        <img src="/images/eye.svg" alt="Toggle password visibility" class="nohover">
+                                        <img src="/images/eyeHover.svg" alt="Toggle password visibility" class="hover">
+                                    </div>
+                                </div>
                                 <input type="submit" value="Login" />
                                 <?php echo $message; ?>
                             </form>

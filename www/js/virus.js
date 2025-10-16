@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
     filters();
     menu();
+    password();
     jQuery(window).on('load', function() {
         loaderHide();
     });
@@ -60,4 +61,14 @@ function menu() {
         jQuery('#menu').removeClass('open');
         jQuery('.menuToggle').removeClass('open');
     });
+}
+function password() {
+    jQuery("#passwordView").click(function() {
+        if(jQuery('input#password').attr('type')=="password") {
+            jQuery('input#password').attr('type','text');
+        }
+        else {
+            jQuery('input#password').attr('type','password')
+        }
+    })
 }
