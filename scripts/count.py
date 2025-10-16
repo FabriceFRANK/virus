@@ -28,4 +28,4 @@ for r in parsed_records:
         doi = r['retracted_pub_doi']
         if not doi in records :
             records.append(doi)
-print(len(records))
+print(str(len(records))+" distinct doi in the JSON file")
