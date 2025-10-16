@@ -1,6 +1,7 @@
 <?php
     $title="List of VIRUS data - Article retracted and/or with EoC";
     include($_SERVER['DOCUMENT_ROOT'].'/includes/bddConnect.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/includes/user.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/orderby.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/functions.php');
@@ -25,7 +26,7 @@
         $params.='perPage='.$perPage.'&';
     }
     else {
-        if($_COOKIE['virus_perPage']) {
+        if(isset($_COOKIE['virus_perPage']) && $_COOKIE['virus_perPage']) {
             $perPage=$_COOKIE['virus_perPage'];
         }
     }

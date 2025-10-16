@@ -1,5 +1,5 @@
 				<div class="logo">
-					<a href="/list.php">
+					<a href="/">
 						<img src="/images/logo.svg" alt="Virus" />
 					</a>
 				</div>

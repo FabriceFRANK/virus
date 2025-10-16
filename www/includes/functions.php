@@ -15,7 +15,7 @@
         }
         
 ?>
-    <a class="sortArrow sortArrow<?php echo $direction; ?> <?php echo $active; ?>" href="<?php echo $urlSort; ?>"><img src="/images/<?php echo $direction; ?>.svg" alt="Sort by <?php echo $filed.' '.$direction; ?>" /></a>
+    <a class="sortArrow sortArrow<?php echo $direction; ?> <?php echo $active; ?>" href="<?php echo $urlSort; ?>"><img src="/images/<?php echo $direction; ?>.svg" alt="Sort by <?php echo $field.' '.$direction; ?>" /></a>
 <?php        
     }
 ?>

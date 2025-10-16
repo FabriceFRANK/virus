@@ -122,10 +122,10 @@ input[type="submit"] {
 .filterReset img {
     height: 28px;
 }
-input[type=search]::placeholder {
+input[type=username]::placeholder, input[type=password]::placeholder, input[type=search]::placeholder {
     color:var(--blue);
 }
-select, input[type=search] {
+select, input[type=search], input[type=username], input[type=password] {
     background:var(--lightblue);
     color:var(--blue);
     border:none;
@@ -327,4 +327,55 @@ td.pubDate {
 .logo img {
     width: 180px;
 	margin-right: 40px;
+}
+form#loginForm input {
+    display: block;
+    margin-bottom: 20px !important;
+}
+.loginContainer {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 100px);
+}
+.loginWrapper {
+    display: table;
+    margin: 45vh auto 0 auto;
+    transform: translateY(-50%);
+}
+form#loginForm {
+    padding: 20px 20px 0 20px;
+    border: 1px solid var(--blue);
+    border-radius: 3px;
+}
+.loginError {
+    color:var(--red);
+    margin-bottom: 20px;
+    display: block;
+}
+.menuUser {
+    margin: 0 10px;
+    position: absolute;
+    bottom: 40px;
+    width: calc( 100% - 20px)
+}
+.menuUsername {
+    float: left;
+}
+.menuLogout {
+    float: right;
+    margin-right: 20px;
+    margin-top: -10px;
+}
+.menuLogout img {
+    width: 32px;
+    position: absolute;
+    right: 40px;
+}
+.menuLogout img.hover {
+    display:none;
+}
+.menuLogout:hover img.hover {
+    display:block;
+}
+.menuLogout:hover img.nohover {
+    display:none;
 }

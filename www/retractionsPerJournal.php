@@ -1,6 +1,7 @@
 <?php
     $title="Retracted articles per Journal";
     include($_SERVER['DOCUMENT_ROOT'].'/includes/bddConnect.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/includes/user.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/orderby.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/functions.php');
