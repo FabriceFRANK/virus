@@ -21,6 +21,11 @@ body {
 a {
     color:var(--blue);
     text-decoration: none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
 }
 a:hover {
     color:var(--bluehover);
@@ -109,6 +114,14 @@ input[type="submit"] {
     text-transform: uppercase;
     font-weight: 600;	
     border-radius: 3px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
+}
+input[type="submit"]:hover {
+    background: var(--bluehover);
 }
 .results {
     float:right;
@@ -117,7 +130,6 @@ input[type="submit"] {
 .filterReset {
     position: relative;
     left: 20px;
-    top:9px;
 }
 .filterReset img {
     height: 28px;
@@ -131,6 +143,13 @@ select, input[type=search], input[type=username], input[type=text], input[type=p
     border:none;
     padding: 4px;
     border-radius: 3px;
+}
+select option {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
 }
 select option:hover {
     background: var(--blue);
@@ -245,6 +264,11 @@ td.pubDate {
     margin: 6px 0;
     transition: 0.4s;
 	border-radius: 3px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
 }
 .menuToggle:hover .bar1, .menuToggle:hover .bar2, .menuToggle:hover .bar3  {
     background-color: var(--bluehover);
@@ -370,6 +394,11 @@ form#loginForm {
     width: 32px;
     position: absolute;
     right: 40px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
 }
 .menuLogout img.hover {
     display:none;
@@ -400,6 +429,11 @@ td.retraction, td.eoc {
 }
 #passwordView img {
     width: 32px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
 }
 input#password {
     float: left;
@@ -407,4 +441,24 @@ input#password {
 }
 #password, #passwordView {
     display: inline-block;
+}
+.filterReset img {
+    position:absolute;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
+}
+.filterReset .hover {
+    display:none;
+}
+.filterReset:hover .hover {
+    display:inline;
+}
+.filterReset:hover .nohover {
+    display:none;
+}
+#filterAuthor, #filterJournal {
+    margin-bottom: 10px;
 }

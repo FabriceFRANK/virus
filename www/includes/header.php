@@ -11,6 +11,15 @@
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preload" href="/images/asc.svg" as="image">
+        <link rel="preload" href="/images/desc.svg" as="image">
+        <link rel="preload" href="/images/eye.svg" as="image">
+        <link rel="preload" href="/images/eyeHover.svg" as="image">
+        <link rel="preload" href="/images/logo.svg" as="image">
+        <link rel="preload" href="/images/logout.svg" as="image">
+        <link rel="preload" href="/images/logoutHover.svg" as="image">
+        <link rel="preload" href="/images/remove.svg" as="image">
+        <link rel="preload" href="/images/removeHover.svg" as="image">
         <title><?php echo $title; ?></title>
     </head>
     <body>

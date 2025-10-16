@@ -128,7 +128,7 @@
                         <select id="type" name="type"><option value="">Type</option><option value="eoc" <?php if(isset($_GET['type']) && $_GET['type']=="eoc") { echo ' selected '; } ?>>Expressions of Concern</option><option <?php if(isset($_GET['type']) && $_GET['type']=="retraction") { echo ' selected '; } ?> value="retraction">Retraction</option></select>
                         <select id="filterAuthor" name="filterAuthor"><?php echo $optionAuthors; ?></select>
                         <select id="filterJournal" name="filterJournal"><?php echo $optionJournals; ?></select>
-                        <input type="submit" value="Filter" /> <a class="filterReset" title="Reset filters" href="/list.php"><img src="/images/remove.svg" alt="Reset filters" /></a>
+                        <input type="submit" value="Filter" /> <a class="filterReset" title="Reset filters" href="/list.php"><img src="/images/remove.svg" alt="Reset filters" class="nohover"/><img src="/images/removeHover.svg" alt="Reset filters" class="hover"/></a>
                         <span class="results"><?php echo number_format($nbresults, 0,',',' '); ?> results</span>
                         <br>
                         <label class="perPageLabel">
