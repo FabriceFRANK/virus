@@ -17,6 +17,7 @@
         $years=mysqli_query($mys, $queryYear);
         $listYears=mysqli_fetch_all($years,MYSQLI_ASSOC);
     ?>
+                <div class="clear"></div>
                 <div id="tableYearsContainer">
                     <table class="tableYears">
                         <thead>

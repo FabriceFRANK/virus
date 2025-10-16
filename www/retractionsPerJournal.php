@@ -17,6 +17,7 @@
         $journals=mysqli_query($mys, $queryJournal);
         $listJournals=mysqli_fetch_all($journals,MYSQLI_ASSOC);
     ?>
+                <div class="clear"></div>
                 <div id="tableYearsContainer">
                     <table class="tableYears">
                         <thead>
