@@ -10,6 +10,7 @@
         <div id="mainContainer">
             <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/menu.php'); ?>
             <div id="main">
+                <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/logo.php'); ?>
                 <h1>Retracted articles per Publication Year</h1>
     <?php
         $queryYear="SELECT COUNT(*) as nbArticles, YEAR(a.`pubDate`) as yearPub FROM `article` a INNER JOIN `retraction` r ON r.`doi`=a.`doi` WHERE YEAR(a.`pubDate`)<>0  GROUP BY yearPub ORDER BY yearPub";
@@ -31,7 +32,7 @@
                             ?>
                             <tr>
                                 <td><?php echo $y['yearPub']; ?></td>
-                                <td><?php echo $y['nbArticles']; ?></td>
+                                <td><?php echo number_format($y['nbArticles'],0,',',' '); ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

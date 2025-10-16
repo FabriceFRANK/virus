@@ -120,6 +120,7 @@
         <div id="mainContainer">
             <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/menu.php'); ?>
             <div id="main">
+				<?php include($_SERVER['DOCUMENT_ROOT'].'/includes/logo.php'); ?>
                 <h1>VIRUS data</h1>
                 <div class="filters">
                     <form id="formFilters" action="/list.php" method="GET">

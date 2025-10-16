@@ -10,6 +10,7 @@
         <div id="mainContainer">
             <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/menu.php'); ?>
             <div id="main">
+                <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/logo.php'); ?>
                 <h1>Retracted articles per Journal</h1>
     <?php
         $queryJournal="SELECT COUNT(*) as nbArticles, j.`name` as journal FROM `article` a INNER JOIN `retraction` r ON r.`doi`=a.`doi` INNER JOIN `journal` j on j.`id`=a.`idJournal` WHERE j.`id`<>23 GROUP BY j.`id`  ORDER BY nbArticles DESC LIMIT 50";
@@ -31,7 +32,7 @@
                             ?>
                             <tr>
                                 <td><?php echo $j['journal']; ?></td>
-                                <td><?php echo $j['nbArticles']; ?></td>
+                                <td><?php echo number_format($j['nbArticles'],0,',',' '); ?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

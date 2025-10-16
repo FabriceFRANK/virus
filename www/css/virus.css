@@ -265,9 +265,8 @@ td.pubDate {
     height:0;
 }
 .menuArea {
-    width:0;
-    height:0;
-    position:relative;
+    position: absolute;
+    right: 55px;
 }
 #menu.open {
     display:block;
@@ -284,6 +283,7 @@ td.pubDate {
     padding: 0;
     z-index: 5;
     overflow: hidden;
+    right: -70px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -320,4 +320,11 @@ td.pubDate {
 .tableYears {
     width: 350px;
     margin: 30px auto;
+}
+.logo {
+    float: left;
+}
+.logo img {
+    width: 180px;
+	margin-right: 40px;
 }
