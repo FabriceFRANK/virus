@@ -5,11 +5,12 @@
     include($_SERVER['DOCUMENT_ROOT'].'/includes/orderby.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/functions.php');
-    if(isset($_GET['generateCsv']) && $_GET['generateCsv'] && $_GET['generateCsv']==1) {
+    if(isset($_GET['generate']) && $_GET['generate'] && $_GET['generate']==1) {
         $query="SELECT a.`doi`, a.`title`, j.`name` as journal, a.`pubDate`, a.`citation`, a.`altmetrics`,  a.`pubpeer`, a.`pubpeerCommentcount`, e.`eoc`, r.`retraction` FROM article a INNER join `journal` j ON j.`id`=a.`iDJournal` LEFT OUTER JOIN `eoc` e ON e.`doi`=a.`doi` LEFT OUTER JOIN `retraction` r ON r.`doi`=a.`doi` GROUP BY a.`doi`";
         $mys=mysqli_connect($dbhost,$dbuser,$dbpass,$dbbd);
         $articles=mysqli_query($mys, $query);
         $listArticles=mysqli_fetch_all($articles,MYSQLI_ASSOC);
+        $json=json_encode($listArticles);
         $csv="Line,DOI,Title,Authors,Journal_Name,Date,DOI_Status,Status,Citations,Altmetrics,EoC_link,Retraction_link,Pubpeer_comments_count,Pubpeer_link\r\n";
         $n=0;
         foreach($listArticles as $a) {
@@ -45,6 +46,9 @@
         }
         $inf=fopen('data.csv', 'w');
         fwrite($inf,$csv);
+        fclose($inf);
+        $inf=fopen('data.json', 'w');
+        fwrite($inf,$json);
         fclose($inf);
     }
 ?>
