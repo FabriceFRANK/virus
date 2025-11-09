@@ -72,6 +72,6 @@ def updateCitationsReference(doi, dataReference, cursor, connection, conv, table
             dataExists = cursor.fetchall()
             exists = len(dataExists)
             if exists==0:
-                sqlReference="INSERT INTO `%s` (`doi`,`pubDoi`,`title`,`pubDate`,`idJournal`) VALUES ('https://doi.org/%s','https://doi.org/%s','%s','%s',%s)" % (table, doi, doiReference, conv.escape(titleReference),pubDateReference,journalReferenceId)
+                sqlReference="INSERT INTO `%s` (`doi`,`pubDoi`,`title`,`pubDate`,`idJournal`) VALUES ('https://doi.org/%s','https://doi.org/%s','%s','%s',%s)" % (table, doiReference, doi, conv.escape(titleReference),pubDateReference,journalReferenceId)
                 cursor.execute(sqlReference)
                 connection.commit()
