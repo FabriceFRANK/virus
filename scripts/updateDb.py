@@ -38,7 +38,7 @@ for record in parseJSON(file_name):
 
 #Parameters 
 startTime = time.time()                                                                             # Start time to measure elapsed time and ETA
-start=38                                                                                             # Default first line to parse
+start=1                                                                                             # Default first line to parse
 end=len(parsed_records)                                                                             # Default last line to parse
 logInfoFile='updateDb.log'                                                                          # Default log file
 force=1                                                                                             # By default update only
@@ -46,6 +46,7 @@ updateArticle=0                                                                 
 updatePubpeer=0                                                                                     # If PubbPeer is updated
 updateReferences=1                                                                                  # If References are updated
 updateCitations=1                                                                                   # If Citations are updated
+updatePMID=1                                                                                        # If PMID is updated
 if len(sys.argv)>3 :
     logInfoFile=sys.argv[3]
 if len(sys.argv)>1 :
@@ -182,7 +183,7 @@ if parsed_records:
 
                             # Data from Dimension   
                             logInfo("    Query Dimensions.ai",logInfoFile)  
-                            queryDimension= f"""search publications where doi="{doi}" return publications [id+title+doi+year+type+authors+journal+times_cited+date+altmetric+reference_ids]""" 
+                            queryDimension= f"""search publications where doi="{doi}" return publications [pmid+id+title+doi+year+type+authors+journal+times_cited+date+altmetric+reference_ids]""" 
                             dataDimension = dsl.query(queryDimension)                            
                             pubDate=''
                             citationsCount=''
@@ -300,6 +301,12 @@ if parsed_records:
                                     connection.commit()
                                     logInfo("      Article updated in database",logInfoFile)
 
+                            # PMID
+                            if (updatePMID==1 or newArticle==1) and 'pmid' in dataDimension['publications'][0]:
+                                queryPMID="UPDATE `article` SET `pmid`=%s WHERE `doi`='https://doi.org/%s'" % (dataDimension['publications'][0]['pmid'], doi)
+                                cursor.execute(queryPMID)
+                                connection.commit()
+                                logInfo("      PMID "+dataDimension['publications'][0]['pmid'],logInfoFile)
                                     
                             #Authors
                             if updateArticle==1 or newArticle==1 :

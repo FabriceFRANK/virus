@@ -172,7 +172,7 @@ select option:hover {
 ul.pagination li.current {
     font-weight: 600;
 }
-.loadingOverlay {
+.loadingOverlay, .detailsLoader {
     position: fixed;
     top: 0;
     left: 0;
@@ -256,8 +256,18 @@ td.pubDate {
     left: 10px;
     width: 27px;
     height: 27px;
-  }
-.bar1, .bar2, .bar3 {
+}
+.articleDetailsClose {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    z-index: 7;
+    top: 10px;
+    right: 20px;
+    width: 27px;
+    height: 27px;
+}
+.bar1, .bar2, .bar3, .bar45-1, .bar45-2 {
     width: 35px;
     height: 5px;
     background-color: var(--blue);
@@ -270,17 +280,22 @@ td.pubDate {
     -o-transition: 0.5s ease;
     transition: all 0.5s ease;
 }
+.bar45-1, .bar45-2 {
+    position: relative;
+    top: 0;
+    display: inline-flex;
+}
 .menuToggle:hover .bar1, .menuToggle:hover .bar2, .menuToggle:hover .bar3  {
     background-color: var(--bluehover);
 }
-.open .bar1 {
+.open .bar1, .bar45-1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);
 }
 .open .bar2 {
     opacity: 0;
 }
-.open .bar3 {
+.open .bar3, .bar45-2 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
 }
@@ -461,4 +476,56 @@ input#password {
 }
 #filterAuthor, #filterJournal {
     margin-bottom: 10px;
+}
+.articleDetails {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 96%;
+    background: white;
+    z-index: 6;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
+    overflow-x:hidden;
+}
+.articleDetails.open {
+    width:96%;    
+    padding: 2%;
+}
+.noScroll {
+    overflow:hidden;
+}
+h2.pubJournalDetails {
+    text-align: center;
+    font-style: italic;
+    margin:0;
+}
+p.pubDateDetails {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.articleDetails iframe {
+    width: 100%;
+    height: 50vh;
+    border: 5px solid var(--blue);
+    margin-top: 20px;
+}
+.pubDetailsRetracted a {
+    color:var(--red);
+    fsont-weight: 600;
+}
+.pubDetailsRetracted a:hover {
+    color:var(--redhover)
+}
+.pubDetailsEoc a {
+    color:var(--orange);
+    font-weight: 600;
+}
+.pubDetailsEoc a:hover {
+    color:var(--orangehover)
 }

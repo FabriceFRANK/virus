@@ -1,3 +1,5 @@
+        <div class="articleDetails">            
+        </div>
         <div class="loadingOverlay">
             <div class="loading-spinner"></div>
             <p class="loading-text"> <span class="loadingText">Loading...</span></p>

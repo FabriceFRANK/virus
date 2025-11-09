@@ -2,6 +2,7 @@ jQuery(document).ready(function() {
     filters();
     menu();
     password();
+    details();
     jQuery(window).on('load', function() {
         loaderHide();
     });
@@ -70,5 +71,23 @@ function password() {
         else {
             jQuery('input#password').attr('type','password')
         }
+    })
+}
+function details() {
+    jQuery('table#articles tr').click(function() {
+        jQuery('.articleDetails').html('<div class="detailsLoader"><div class="loading-spinner"></div></div>');
+        jQuery('.articleDetails').addClass('open');
+        jQuery('body').addClass('noScroll');
+        jQuery.ajax({
+            url: "/includes/details.php?doi="+jQuery(this).find('td.doi a').attr('href'),
+            method: "GET",                                    
+            success: function(data) {
+                jQuery('.articleDetails').html(data);
+                jQuery('.articleDetailsClose').click(function() {
+                    jQuery('.articleDetails').removeClass('open');
+                    jQuery('body').removeClass('noScroll');                    
+                })
+            }
+        });
     })
 }
