@@ -38,7 +38,7 @@ for record in parseJSON(file_name):
 
 #Parameters 
 startTime = time.time()                                                                             # Start time to measure elapsed time and ETA
-start=1                                                                                             # Default first line to parse
+start=38                                                                                             # Default first line to parse
 end=len(parsed_records)                                                                             # Default last line to parse
 logInfoFile='updateDb.log'                                                                          # Default log file
 force=1                                                                                             # By default update only

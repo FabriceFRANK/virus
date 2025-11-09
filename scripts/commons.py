@@ -67,7 +67,7 @@ def updateCitationsReference(doi, dataReference, cursor, connection, conv, table
             else :
                 journalReferenceId=dataExists[0][0] 
 
-            sqlExists="SELECT * FROM `%s` WHERE `doi`='https://doi.org/%s' AND `pubDoi`='https://doi.org/%s'" % (table, doi, doiReference)
+            sqlExists="SELECT * FROM `%s` WHERE `doi`='https://doi.org/%s' AND `pubDoi`='https://doi.org/%s'" % (table, doiReference, doi)
             cursor.execute(sqlExists)
             dataExists = cursor.fetchall()
             exists = len(dataExists)
