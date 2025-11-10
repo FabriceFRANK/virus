@@ -1,23 +1,21 @@
 <?php                  
-    $title="Publication citing more than 2 retracted articles";
+    $title="Publications citing more than 2 retracted articles";
     include($_SERVER['DOCUMENT_ROOT'].'/includes/bddConnect.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/user.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/orderby.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/functions.php');
+    $queryRetracted="SELECT c.`doi`, c.`title`, count(c.`pubDoi`) AS `nb` FROM `citation` c INNER JOIN `retraction` r ON r.`doi`=c.`pubDoi` WHERE c.`doi` NOT IN (SELECT `doi` FROM `retraction`) AND c.`doi` NOT IN (SELECT `doi` from `eoc`) AND c.`doi` NOT IN (SELECT `retraction` FROM `retraction`) AND c.`doi` NOT IN (SELECT `eoc` from `eoc`) GROUP BY c.`doi` HAVING count(c.`pubDoi`)>2 ORDER BY `nb` DESC";
+    $retracted=mysqli_query($mys, $queryRetracted);
+    $listRetracted=mysqli_fetch_all($retracted,MYSQLI_ASSOC);
+    $n=1;
 ?>
         <div id="mainContainer">
             <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/menu.php'); ?>
             <div id="main">
                 <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/logo.php'); ?>
-                <h1>Publication citing more than 2 retracted articles</h1>
-    <?php
-    //DebugBreak();
-        $queryRetracted="SELECT c.`doi`, c.`title`, count(c.`pubDoi`) AS `nb` FROM `citation` c INNER JOIN `retraction` r ON r.`doi`=c.`pubDoi` WHERE c.`doi` NOT IN (SELECT `doi` FROM `retraction`) AND c.`doi` NOT IN (SELECT `doi` from `eoc`) AND c.`doi` NOT IN (SELECT `retraction` FROM `retraction`) AND c.`doi` NOT IN (SELECT `eoc` from `eoc`) GROUP BY c.`doi` HAVING count(c.`pubDoi`)>2 ORDER BY `nb` DESC";
-        $retracted=mysqli_query($mys, $queryRetracted);
-        $listRetracted=mysqli_fetch_all($retracted,MYSQLI_ASSOC);
-        $n=1;
-    ?>
+                <h1>Publications citing more than 2 retracted articles</h1>
+                <span class="results"><span style="position:relative;top:50px;"><?php echo number_format(count($listRetracted),0,',',' '); ?> results</span></span>
                 <div class="clear"></div>
                 <div id="tableRetractedContainer">
                     <table class="tableRetracted">
