@@ -19,7 +19,7 @@
 ######################################################################################################################ô###
 
 # Imports
-import json, mysql.connector, dimcli, time, datetime, urllib, requests, sys
+import json, mysql.connector, dimcli, time, datetime, urllib, requests, sys, os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -31,7 +31,8 @@ from bs4 import BeautifulSoup
 from commons import parseJSON, logInfo, emptyNull, updateCitationsReference
 
 # Parsing JSON file
-file_name = 'data.json'
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_name = script_dir+'data.json'
 parsed_records = []
 for record in parseJSON(file_name):
     parsed_records.append(record)
@@ -104,8 +105,8 @@ logInfo("Update Citations  "+str(updateCitations),logInfoFile)
 try:
     connection = mysql.connector.connect(
         host="192.168.1.3",
-        user="root",
-        password="Mcsuapte@2017",
+        user="virus",
+        password="virus",
         database="virus"
     )
     cursor = connection.cursor()

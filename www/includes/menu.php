@@ -13,6 +13,7 @@
               <h2><a href="/">Visualization</a></h2>
               <h2><a href="/list.php">List of articles</a></h2>
               <h2><a href="/retracted.php">Citing retracted</a></h2>
+              <h2><a href="/searchReferences.php">Search retracted references</a></h2>
               <h2><a href="/retractionsPerYear.php">Retractions per year</a></h2>
               <h2><a href="/retractionsPerJournal.php">Retractions per journal</a></h2>
             </div>

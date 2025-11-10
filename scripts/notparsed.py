@@ -21,8 +21,8 @@ from commons import parseJSON, logInfo, emptyNull
 # Mysql Connection
 connection = mysql.connector.connect(
     host="192.168.1.3",
-    user="root",
-    password="Mcsuapte@2017",
+    user="virus",
+    password="virus",
     database="virus"
 )
 cursor = connection.cursor()

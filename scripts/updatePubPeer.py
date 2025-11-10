@@ -51,8 +51,8 @@ recordsCount=0
 try:
     connection = mysql.connector.connect(
         host="192.168.1.3",
-        user="root",
-        password="Mcsuapte@2017",
+        user="virus",
+        password="virus",
         database="virus"
     )
     cursor = connection.cursor()

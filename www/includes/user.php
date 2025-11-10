@@ -1,6 +1,6 @@
 <?php
     if(isset($_GET['logout']) && $_GET['logout']=="1") {
-        setcookie("virus_username", "", time() + 3600);
+        setcookie("virus_username", "", time() + 3600*24);
         header("Location: /login.php", true, 302);
         die();        
     }
@@ -13,13 +13,13 @@
             $nbUser=mysqli_num_rows($user);
             if($nbUser>0) {
                 $_COOKIE['virus_authenticated']=1;
-                setcookie("virus_username", $username, time() + 3600);
+                setcookie("virus_username", $username, time() + 3600*24);
                 header("Location: /", true, 302);
                 die();
             }
             else {
                 $message='<span class="loginError">Unknown username or password</span>';
-                setcookie("virus_username", "", time() + 3600);
+                setcookie("virus_username", "", time() + 3600*24);
             }
         }
         if((!isset($_COOKIE['virus_username']) or !$_COOKIE['virus_username'] or $_COOKIE['virus_username']=="") and $_SERVER['SCRIPT_NAME']!='/login.php') {

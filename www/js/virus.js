@@ -91,3 +91,13 @@ function details() {
         });
     })
 }
+function searchResults(doi) {
+    jQuery.ajax({
+        url: "/includes/searchResults.php?doi="+doi,
+        method: "GET",                                    
+        success: function(data) {
+            var content=data.split('|||||')[1];
+            jQuery('#searchResultsContainer').html(content);
+        }
+    });    
+}

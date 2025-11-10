@@ -577,3 +577,10 @@ input#txtSearch {
     -o-transition: 0.5s ease;
     transition: all 0.5s ease;
 }
+#searchReferences input[type=text] {
+    width: 400px;
+}
+#searchReferences {
+    margin: 50px auto;
+    text-align: center;
+}
