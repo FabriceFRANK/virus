@@ -47,11 +47,11 @@
     if($nbresults!=0) {
 ?>
     <h3>Citations</h3>
-    <ul class="ulReferences">
+    <ol class="ulReferences">
     <?php foreach($citations as $c) { ?>
         <li><a href="<?php echo $c['doi']; ?>" target="_blank"><?php echo $c['title']; ?> (<?php echo $c['pubDate']; ?>)</a><?php if($c['retraction']!=Null && $c['retraction']!='') { echo '&nbsp;<span class="pubDetailsRetracted"><a href="'.$c['retraction'].'" target="_blank">Retracted</a></span>'; } ?></li>
     <?php } ?>
-    </ul>
+    </ol>
 <?php        
     }
     $queryRef="SELECT c.*, r.* from `reference` c LEFT OUTER JOIN `retraction` r on r.`doi`=c.`doi` WHERE `pubDoi`='".$doi."'";
@@ -60,11 +60,11 @@
     if($nbresults!=0) {
 ?>
     <h3>References</h3>
-    <ul class="ulReferences">
+    <ol class="ulReferences">
     <?php foreach($references as $r) { ?>
         <li><a href="<?php echo $r['doi']; ?>" target="_blank"><?php echo $r['title']; ?> (<?php echo $r['pubDate']; ?>)</a><?php if($r['retraction']!=Null && $r['retraction']!='') { echo '&nbsp;<span class="pubDetailsRetracted"><a href="'.$c['retraction'].'" target="_blank">Retracted</a></span>'; } ?></li>
     <?php } ?>
-    </ul>
+    </ol>
 <?php        
     }
 ?>

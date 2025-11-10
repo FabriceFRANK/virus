@@ -356,6 +356,34 @@ td.pubDate {
     vertical-align: top;
     margin-top: 20px;
 }
+#tableRetractedContainer {
+    width:90%;
+    margin: 20px 5%;
+    vertical-align: top;
+}
+.tableRetracted {
+    width: 100%;
+}
+.tableRetracted tr td {
+    vertical-align: top;
+}
+.tableRetracted tr td:nth-child(1){
+    width: 5%;
+}
+.tableRetracted tr td:nth-child(2){
+    width: 20%;
+}
+.tableRetracted tr td:nth-child(3){
+    width: 40%;
+}
+.tableRetracted tr td:nth-child(4){
+    width: 20%;
+    text-align: center;
+}
+.tableRetracted tr td:nth-child(5){
+    width: 15%;
+    text-align: center;
+}
 .tableYears {
     width: 350px;
     margin: 30px auto;
@@ -531,4 +559,21 @@ p.pubDateDetails {
 }
 input#txtSearch {
     width: 400px;
+}
+.pubpeerLink .hover {
+    display:none;
+}
+.pubpeerLink:hover .hover {
+    display:inline-block;
+}
+.pubpeerLink:hover .nohover {
+    display:none;
+}
+.pubpeerLink img {
+    height:15px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: all 0.5s ease;
 }
