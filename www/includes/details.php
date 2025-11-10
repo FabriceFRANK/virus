@@ -41,7 +41,7 @@
     <iframe src="/includes/pmidContent.php?pmid=<?php echo $dataArticle['pmid']; ?>"></iframe>
 <?php } ?>
 <?php
-    $queryCit="SELECT * from `citation` WHERE `pubDoi`='".$doi."'";
+    $queryCit="SELECT c.*, r.* from `citation`c LEFT OUTER JOIN `retraction` r on r.`doi`=c.`doi` WHERE c.`pubDoi`='".$doi."'";
     $citations=mysqli_query($mys, $queryCit);
     $nbresults=mysqli_num_rows($citations);
     if($nbresults!=0) {
@@ -49,12 +49,12 @@
     <h3>Citations</h3>
     <ul class="ulReferences">
     <?php foreach($citations as $c) { ?>
-        <li><a href="<?php echo $c['doi']; ?>" target="_blank"><?php echo $c['title']; ?> (<?php echo $c['pubDate']; ?>)</a></li>
+        <li><a href="<?php echo $c['doi']; ?>" target="_blank"><?php echo $c['title']; ?> (<?php echo $c['pubDate']; ?>)</a><?php if($c['retraction']!=Null && $c['retraction']!='') { echo '&nbsp;<span class="pubDetailsRetracted"><a href="'.$c['retraction'].'" target="_blank">Retracted</a></span>'; } ?></li>
     <?php } ?>
     </ul>
 <?php        
     }
-    $queryRef="SELECT * from `reference` WHERE `pubDoi`='".$doi."'";
+    $queryRef="SELECT c.*, r.* from `reference` c LEFT OUTER JOIN `retraction` r on r.`doi`=c.`doi` WHERE `pubDoi`='".$doi."'";
     $references=mysqli_query($mys, $queryRef);
     $nbresults=mysqli_num_rows($references);
     if($nbresults!=0) {
@@ -62,7 +62,7 @@
     <h3>References</h3>
     <ul class="ulReferences">
     <?php foreach($references as $r) { ?>
-        <li><a href="<?php echo $r['doi']; ?>" target="_blank"><?php echo $r['title']; ?> (<?php echo $r['pubDate']; ?>)</a></li>
+        <li><a href="<?php echo $r['doi']; ?>" target="_blank"><?php echo $r['title']; ?> (<?php echo $r['pubDate']; ?>)</a><?php if($r['retraction']!=Null && $r['retraction']!='') { echo '&nbsp;<span class="pubDetailsRetracted"><a href="'.$c['retraction'].'" target="_blank">Retracted</a></span>'; } ?></li>
     <?php } ?>
     </ul>
 <?php        

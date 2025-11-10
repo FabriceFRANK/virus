@@ -502,7 +502,7 @@ input#password {
 h2.pubJournalDetails {
     text-align: center;
     font-style: italic;
-    margin:0;
+    margin:0;   
 }
 p.pubDateDetails {
     text-align: center;
@@ -528,4 +528,7 @@ p.pubDateDetails {
 }
 .pubDetailsEoc a:hover {
     color:var(--orangehover)
+}
+input#txtSearch {
+    width: 400px;
 }
