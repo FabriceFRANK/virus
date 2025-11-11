@@ -31,15 +31,14 @@ from bs4 import BeautifulSoup
 from commons import parseJSON, logInfo, emptyNull, updateCitationsReference
 
 # Parsing JSON file
-script_dir = os.path.dirname(os.path.abspath(__file__))
-file_name = script_dir+'data.json'
+file_name = 'data.json'
 parsed_records = []
 for record in parseJSON(file_name):
     parsed_records.append(record)
 
 #Parameters 
 startTime = time.time()                                                                             # Start time to measure elapsed time and ETA
-start=7059                                                                                             # Default first line to parse
+start=17350                                                                                             # Default first line to parse
 end=len(parsed_records)                                                                             # Default last line to parse
 logInfoFile='updateDb.log'                                                                          # Default log file
 force=1                                                                                             # By default update only
