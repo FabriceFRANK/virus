@@ -6,6 +6,10 @@
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/functions.php');
     $message='';
+    $redirect='';
+    if(isset($_GET['redirect'])) {
+        $redirect=$_GET['redirect'];
+    }
 ?>
         <div id="mainContainer">
             <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/menu.php'); ?>
@@ -17,6 +21,7 @@
                             <form id="loginForm" name="loginForm" action="/login.php" method="POST">
                                 <div class="formLogin">
                                     <input type="username" id="username" name="username" required placeholder="User name" />
+                                    <input type="hidden" id="redirect" name="redirect" value="<?php echo $redirect; ?>" />
                                 </div>
                                 <div class="formPassword">
                                     <input type="password" id="password" name="password" required placeholder="Password" /> 

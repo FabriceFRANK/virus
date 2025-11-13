@@ -13,7 +13,7 @@ cursor = connection.cursor()
 
 # Get doi
 #doi='https://doi.org/10.1186/s41073-023-00134-4'         # For test purposes
-if len(sys.argv)>1 or doi :
+if len(sys.argv)>1 : #or doi :
     if len(sys.argv)>1 :
         doi=sys.argv[1]
 
@@ -43,7 +43,7 @@ if len(sys.argv)>1 or doi :
                 text=text+" published in "
             else :
                 text=text+" in "
-            text='<p><i>'+text+dataDimension['publications'][0]['journal']['title']+'</i></p>'
+            text='<p>'+text+'<i>'+dataDimension['publications'][0]['journal']['title']+'</i></p>'
         if 'reference_ids' in dataDimension['publications'][0] and len(dataDimension['publications'][0]['reference_ids'])>0 :            
             referencesList=dataDimension['publications'][0]['reference_ids']
             referencesListString = ", ".join([f'"{ref_id}"' for ref_id in referencesList])
@@ -62,15 +62,20 @@ if len(sys.argv)>1 or doi :
                             sup=sup+' published on '+reference['date']
                         if isinstance(dataExists[0][5], (datetime, date)) and dataExists[0][5].year!=0 :
                             sup=sup+' retracted on '+str(dataExists[0][5].year)+"-"+str(dataExists[0][5].strftime('%m'))+'-'+str(dataExists[0][5].strftime('%d'))
-                        result=result+'<li><a href="https://doi.org/'+reference['doi']+'" target="_blank">'+reference['title']+'</a>'+sup+'</li>'
+                        result=result+'<li><a href="https://doi.org/'+reference['doi']+'" target="_blank">'+reference['title']+'</a>'+sup+'<div class="pibpeerContent">['+reference['title']+'](https://doi.org/'+reference['doi']+')</div></li>'
                         nb=nb+1
             if result=='' :
                 text=text+'<p>No retracted reference found</p>'
             else :
-                text=text+'<p>'+str(nb)+' retracted references found</p><ol>'+result+'</ol>'
+                plural='';
+                if nb>1 :
+                    plural='s'
+                text=text+'<p>'+str(nb)+' retracted reference'+plural+' found</p><ol>'+result+'</ol>'
         else :
             text=text+'<p>No retracted reference found</p>'
             
     else :
         text=text+"<p>No data found for this publication</p>"
     print('|||||'+text)
+else :
+    print('|||||Syntax : python searchResults.py [doi]')

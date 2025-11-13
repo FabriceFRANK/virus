@@ -14,7 +14,11 @@
             if($nbUser>0) {
                 $_COOKIE['virus_authenticated']=1;
                 setcookie("virus_username", $username, time() + 3600*24);
-                header("Location: /", true, 302);
+                $redirect='/';
+                if(isset($_POST['redirect'])) {
+                    $redirect=urldecode($_POST['redirect']);
+                }
+                header("Location: ".$redirect, true, 302);
                 die();
             }
             else {
@@ -23,7 +27,7 @@
             }
         }
         if((!isset($_COOKIE['virus_username']) or !$_COOKIE['virus_username'] or $_COOKIE['virus_username']=="") and $_SERVER['SCRIPT_NAME']!='/login.php') {
-            header("Location: /login.php", true, 302);
+            header("Location: /login.php?redirect=".urlencode($_SERVER['REQUEST_URI']), true, 302);
             die();
         }
         else {

@@ -26,7 +26,7 @@
 ?>
                 <h2>Search result for <i><a href="<?php echo $value; ?>" target="_blank"><?php echo $value; ?></a></i></h2>
                 <div id="searchResultsContainer">
-                    <div class="loading-spinner"></div>
+                    <div class="loading-spinner"></div> <span class="loadingText">Search in progress...</span></p>
                 </div>
                 <script>
                 jQuery(document).ready(function() {
@@ -40,5 +40,8 @@
             </div>
         </div>
         <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'); ?>
+        <script>
+        jQuery('#doi').focus();
+        </script>
     </body>
 </html>

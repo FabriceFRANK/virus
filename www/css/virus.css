@@ -143,6 +143,7 @@ select, input[type=search], input[type=username], input[type=text], input[type=p
     border:none;
     padding: 4px;
     border-radius: 3px;
+    max-width: 400px !important;
 }
 select option {
     -webkit-transition: all 0.5s ease;
@@ -393,7 +394,8 @@ td.pubDate {
 }
 .logo img {
     width: 180px;
-	margin-right: 40px;
+	margin-right: 40px;    
+    max-width: 20vw;
 }
 form#loginForm input {
     display: block;
@@ -583,4 +585,21 @@ input#txtSearch {
 #searchReferences {
     margin: 50px auto;
     text-align: center;
+}
+#searchResultsContainer .loadingText  {
+    position:relative;
+    top:-40px;
+    left:150px;    
+}
+#searchResultsContainer .loading-spinner {
+    margin-top:80px;
+    margin-left:80px;
+}
+@media only screen and (max-width:1023px) {  
+    .filters {
+        clear:both;
+    }
+    h1 {
+        margin: 0 80px;
+    }
 }
