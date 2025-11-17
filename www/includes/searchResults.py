@@ -12,7 +12,7 @@ connection = mysql.connector.connect(
 cursor = connection.cursor()
 
 # Get doi
-#doi='https://doi.org/10.1186/s41073-023-00134-4'         # For test purposes
+#doi='https://doi.org/10.3389/fonc.2023.1215194'         # For test purposes
 if len(sys.argv)>1 : #or doi :
     if len(sys.argv)>1 :
         doi=sys.argv[1]
@@ -24,6 +24,7 @@ if len(sys.argv)>1 : #or doi :
     queryDimension= f"""search publications where doi="{doi}" return publications [title+journal+times_cited+date+altmetric+reference_ids]""" 
     dataDimension = dsl.query(queryDimension) 
     result=''
+    forPubPeer=''
     nb=0
     text=''
     if len(dataDimension['publications']) >0 :
@@ -63,6 +64,7 @@ if len(sys.argv)>1 : #or doi :
                         if isinstance(dataExists[0][5], (datetime, date)) and dataExists[0][5].year!=0 :
                             sup=sup+' retracted on '+str(dataExists[0][5].year)+"-"+str(dataExists[0][5].strftime('%m'))+'-'+str(dataExists[0][5].strftime('%d'))
                         result=result+'<li><a href="https://doi.org/'+reference['doi']+'" target="_blank">'+reference['title']+'</a>'+sup+'<div class="pibpeerContent">['+reference['title']+'](https://doi.org/'+reference['doi']+')</div></li>'
+                        forPubPeer+='- ['+reference['title']+'](https://doi.org/'+reference['doi']+")\n"
                         nb=nb+1
             if result=='' :
                 text=text+'<p>No retracted reference found</p>'
@@ -70,7 +72,7 @@ if len(sys.argv)>1 : #or doi :
                 plural='';
                 if nb>1 :
                     plural='s'
-                text=text+'<p>'+str(nb)+' retracted reference'+plural+' found</p><ol>'+result+'</ol>'
+                text=text+'<p>'+str(nb)+' retracted reference'+plural+' found</p><ol>'+result+'</ol><div class="pibpeerContent">'+forPubPeer+'</div>'
         else :
             text=text+'<p>No retracted reference found</p>'
             

@@ -6,7 +6,7 @@
     include($_SERVER['DOCUMENT_ROOT'].'/includes/orderby.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
     include($_SERVER['DOCUMENT_ROOT'].'/includes/functions.php');
-    $queryRetracted="SELECT c.`doi`, c.`title`, count(c.`pubDoi`) AS `nb` FROM `citation` c INNER JOIN `retraction` r ON r.`doi`=c.`pubDoi` WHERE c.`doi` NOT IN (SELECT `doi` FROM `retraction`) AND c.`doi` NOT IN (SELECT `doi` from `eoc`) AND c.`doi` NOT IN (SELECT `retraction` FROM `retraction`) AND c.`doi` NOT IN (SELECT `eoc` from `eoc`) GROUP BY c.`doi` HAVING count(c.`pubDoi`)>".$minRetracted." ORDER BY `nb` DESC";
+    $queryRetracted="SELECT c.`doi`, count(c.`pubDoi`) as `nb` FROM `citation` c INNER JOIN `retraction` r on r.`doi`=c.`pubDoi` WHERE c.`doi` NOT IN (SELECT `doi` FROM `retraction`) GROUP BY c.`doi` HAVING count(c.`pubDoi`)>".$minRetracted." ORDER BY `nb` DESC";
     $retracted=mysqli_query($mys, $queryRetracted);
     $listRetracted=mysqli_fetch_all($retracted,MYSQLI_ASSOC);
     $n=1;
